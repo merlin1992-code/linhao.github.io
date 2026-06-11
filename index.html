@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>个人简历</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --line: #e5e7eb;
+      --tag: #eff6ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .resume {
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+      border: 1px solid rgba(229, 231, 235, 0.8);
+    }
+
+    .hero {
+      padding: 40px;
+      background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+      color: #fff;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+    }
+
+    .sidebar {
+      padding: 32px 24px;
+      background: #f9fbff;
+      border-right: 1px solid var(--line);
+    }
+
+    .main {
+      padding: 32px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      color: var(--primary);
+      border-left: 4px solid var(--primary);
+      padding-left: 10px;
+    }
+
+    .info-item {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .info-item strong {
+      color: var(--text);
+      display: inline-block;
+      min-width: 72px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      background: var(--tag);
+      color: var(--primary);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid #dbeafe;
+    }
+
+    .timeline-item {
+      margin-bottom: 22px;
+      padding-bottom: 22px;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .timeline-item h3 {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .timeline-item .meta {
+      margin: 4px 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .timeline-item ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .timeline-item li {
+      margin-bottom: 8px;
+    }
+
+    .summary {
+      font-size: 15px;
+      color: #374151;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero {
+        padding: 30px 24px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .main {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="resume">
+      <header class="hero">
+        <h1>你的名字</h1>
+        <p>前端开发工程师 / 全栈开发工程师</p>
+      </header>
+
+      <div class="content">
+        <aside class="sidebar">
+          <section class="section">
+            <h2>基本信息</h2>
+            <div class="info-item"><strong>电话：</strong>138-0000-0000</div>
+            <div class="info-item"><strong>邮箱：</strong>your@email.com</div>
+            <div class="info-item"><strong>城市：</strong>中国 · 你的城市</div>
+            <div class="info-item"><strong>GitHub：</strong>github.com/yourname</div>
+          </section>
+
+          <section class="section">
+            <h2>专业技能</h2>
+            <div class="tags">
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Vue</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Git</span>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>个人优势</h2>
+            <div class="summary">
+              具备良好的编码习惯和团队协作能力，关注用户体验与页面性能优化，能够独立完成项目开发与上线。
+            </div>
+          </section>
+        </aside>
+
+        <main class="main">
+          <section class="section">
+            <h2>个人简介</h2>
+            <p class="summary">
+              这里填写你的个人简介，例如：拥有 3 年以上 Web 开发经验，熟悉前端工程化、组件化开发，具备一定后端开发能力，能够快速理解业务并推动项目落地。
+            </p>
+          </section>
+
+          <section class="section">
+            <h2>工作经历</h2>
+            <div class="timeline-item">
+              <h3>某某科技有限公司 · 前端开发工程师</h3>
+              <div class="meta">2022.07 - 至今</div>
+              <ul>
+                <li>负责公司核心业务系统的前端开发与维护，提升页面交互体验与开发效率。</li>
+                <li>参与组件库建设与公共模块封装，减少重复开发成本。</li>
+                <li>优化项目首屏加载速度与接口交互体验，提升系统整体性能。</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <h3>某某网络有限公司 · Web 开发工程师</h3>
+              <div class="meta">2020.07 - 2022.06</div>
+              <ul>
+                <li>参与企业官网、活动页和后台管理系统开发，支持多个业务线快速迭代。</li>
+                <li>配合产品与设计完成需求评审、功能实现与问题修复。</li>
+                <li>编写技术文档并协助新人快速熟悉项目结构与开发流程。</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>项目经历</h2>
+            <div class="timeline-item">
+              <h3>后台管理系统重构项目</h3>
+              <div class="meta">技术栈：Vue / TypeScript / Element Plus</div>
+              <ul>
+                <li>主导旧系统模块化重构，统一页面结构与交互规范。</li>
+                <li>封装通用表格、表单与弹窗组件，提高开发复用率。</li>
+                <li>推动代码规范落地，提升团队协作效率与代码质量。</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <h3>企业官网与品牌展示站</h3>
+              <div class="meta">技术栈：HTML / CSS / JavaScript</div>
+              <ul>
+                <li>负责页面开发、响应式适配和动画效果实现。</li>
+                <li>优化 SEO 基础配置与页面加载性能，提升搜索曝光与访问体验。</li>
+                <li>完成部署上线并持续维护内容更新。</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>教育经历</h2>
+            <div class="timeline-item">
+              <h3>某某大学 · 计算机科学与技术</h3>
+              <div class="meta">2016.09 - 2020.06</div>
+              <ul>
+                <li>主修课程：数据结构、操作系统、计算机网络、数据库原理、软件工程等。</li>
+              </ul>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

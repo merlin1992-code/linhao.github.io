@@ -1,288 +1,466 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>个人简历</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>林皞 | AI-assisted Engineering · E2E Perception</title>
+  <meta name="description" content="林皞：端到端算法专家，AI-assisted Engineering，3D/4D Scene Representation，高性能训练框架，自动驾驶数据闭环。" />
   <style>
     :root {
-      --bg: #f6f8fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --primary: #2563eb;
-      --line: #e5e7eb;
-      --tag: #eff6ff;
+      --bg: #070b12;
+      --bg2: #0b1220;
+      --card: rgba(255,255,255,.074);
+      --card2: rgba(255,255,255,.105);
+      --line: rgba(255,255,255,.13);
+      --line2: rgba(125,211,252,.26);
+      --text: #eef5ff;
+      --muted: #aebbd0;
+      --subtle: #76869d;
+      --accent: #68e1fd;
+      --accent2: #a78bfa;
+      --accent3: #7dd3fc;
+      --good: #48e39b;
+      --warn: #fbbf24;
+      --max: 1180px;
+      --radius: 22px;
+      --shadow: 0 24px 90px rgba(0,0,0,.38);
     }
-
     * { box-sizing: border-box; }
-
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
       color: var(--text);
-      line-height: 1.6;
+      background:
+        radial-gradient(circle at 16% 4%, rgba(104,225,253,.20), transparent 26%),
+        radial-gradient(circle at 84% 0%, rgba(167,139,250,.19), transparent 30%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 55%, var(--bg) 100%);
+      line-height: 1.68;
     }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .shell { width: min(var(--max), calc(100% - 38px)); margin: 0 auto; }
 
-    .container {
-      max-width: 920px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .nav { position: sticky; top: 0; z-index: 50; background: rgba(7,11,18,.72); border-bottom: 1px solid var(--line); backdrop-filter: blur(18px); }
+    .nav-inner { height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 850; letter-spacing: -.02em; }
+    .brand-mark { width: 36px; height: 36px; border-radius: 13px; display: grid; place-items: center; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #04111e; box-shadow: 0 0 30px rgba(104,225,253,.38); }
+    .nav-links { display: flex; align-items: center; gap: 17px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.075); color: var(--text); border-radius: 999px; padding: 10px 15px; font-size: 14px; transition: .16s ease; }
+    .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.30); }
+    .btn.primary { border-color: rgba(104,225,253,.45); background: linear-gradient(135deg, rgba(104,225,253,.25), rgba(167,139,250,.22)); }
+
+    .hero { padding: 72px 0 34px; }
+    .hero-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 46px; align-items: center; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .09em; font-weight: 800; font-size: 13px; }
+    h1 { font-size: clamp(48px, 6.2vw, 76px); line-height: .92; margin: 12px 0 10px; letter-spacing: -.055em; }
+    .role-line { font-size: clamp(22px, 3.4vw, 36px); line-height: 1.05; margin: 0 0 18px; letter-spacing: -.045em; color: transparent; background: linear-gradient(135deg, var(--accent), #e9ddff 45%, var(--accent2)); -webkit-background-clip: text; background-clip: text; font-weight: 850; }
+    .lead { font-size: clamp(16px, 1.65vw, 19px); color: #dce8fb; max-width: 620px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+    .tag { border: 1px solid var(--line); background: rgba(255,255,255,.055); color: var(--muted); padding: 7px 11px; border-radius: 999px; font-size: 13px; }
+    .hero-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); overflow: hidden; position: relative; }
+    .hero-card img { aspect-ratio: 16/9.5; object-fit: cover; width: 100%; opacity: .93; }
+    .hero-overlay { position: absolute; inset: auto 14px 14px 14px; border: 1px solid rgba(255,255,255,.18); border-radius: 18px; padding: 14px; background: rgba(7,11,18,.68); backdrop-filter: blur(16px); }
+    .metric-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .metric-mini strong { display: block; font-size: 19px; color: var(--text); line-height: 1.1; }
+    .metric-mini span { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+    section { padding: 42px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
+    .section-title { margin: 0; font-size: clamp(26px, 4vw, 42px); letter-spacing: -.04em; }
+    .section-desc { color: var(--muted); max-width: 760px; margin: 7px 0 0; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; background: var(--card); box-shadow: 0 18px 50px rgba(0,0,0,.20); }
+    .card h3 { margin: 0 0 9px; font-size: 18px; letter-spacing: -.02em; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .card.featured { border-color: rgba(104,225,253,.30); background: linear-gradient(180deg, rgba(104,225,253,.10), rgba(255,255,255,.055)); }
+    .num { font-size: 34px; letter-spacing: -.04em; font-weight: 850; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+
+    .metric-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .metric-card { border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.065); padding: 13px; }
+    .metric-card b { display: block; color: var(--accent); font-size: 25px; line-height: 1; letter-spacing: -.04em; }
+    .metric-card span { color: var(--muted); font-size: 12px; display: block; margin-top: 7px; }
+    .metric-card em { color: var(--subtle); font-style: normal; font-size: 11px; display: block; margin-top: 3px; }
+    .bar-card { border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.045); padding: 16px; }
+    .bar-card h4 { margin: 0 0 10px; font-size: 15px; }
+    .bar-row { display: grid; grid-template-columns: 104px 1fr 52px; gap: 10px; align-items: center; margin: 10px 0; color: var(--muted); font-size: 12px; }
+    .bar-track { height: 10px; background: rgba(255,255,255,.10); border-radius: 999px; overflow: hidden; }
+    .bar { height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+    .bar-value { text-align: right; color: var(--text); font-variant-numeric: tabular-nums; }
+
+
+    .seg-panel { display: grid; grid-template-columns: .98fr 1.02fr; gap: 16px; padding: 20px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.035); }
+    .seg-copy h4 { margin: 0 0 8px; font-size: 18px; letter-spacing: -.02em; }
+    .seg-copy p { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+    .seg-chip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .seg-chip { border: 1px solid var(--line); border-radius: 16px; padding: 12px; background: rgba(255,255,255,.065); }
+    .seg-chip b { display: block; color: var(--text); font-size: 13px; margin-bottom: 5px; }
+    .seg-chip span { color: var(--accent); font-size: 22px; font-weight: 850; letter-spacing: -.04em; line-height: 1; }
+    .seg-chip em { color: var(--muted); font-size: 11px; font-style: normal; display: block; margin-top: 4px; }
+    .metrics-details { grid-column: 1 / -1; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.045); overflow: hidden; }
+    .metrics-details summary { cursor: pointer; padding: 12px 15px; color: var(--text); font-weight: 800; list-style: none; }
+    .metrics-details summary::-webkit-details-marker { display: none; }
+    .metrics-details summary::after { content: '展开'; float: right; color: var(--accent); font-size: 12px; }
+    .metrics-details[open] summary::after { content: '收起'; }
+    .seg-table-wrap { overflow-x: auto; border-top: 1px solid var(--line); }
+    .seg-table { width: 100%; border-collapse: collapse; min-width: 760px; font-size: 12px; color: var(--muted); }
+    .seg-table th, .seg-table td { padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,.08); text-align: left; }
+    .seg-table th { color: var(--text); background: rgba(255,255,255,.045); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+    .seg-table td:nth-child(3), .seg-table td:nth-child(4) { color: var(--accent); font-variant-numeric: tabular-nums; font-weight: 750; }
+
+    .project { border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.058); overflow: hidden; margin: 18px 0; }
+    .project-head { display: grid; grid-template-columns: 1fr auto; gap: 14px; padding: 20px; border-bottom: 1px solid var(--line); }
+    .project-head h3 { margin: 0; font-size: 22px; letter-spacing: -.03em; }
+    .project-head p { margin: 6px 0 0; color: var(--muted); }
+    .pill { align-self: start; color: #06111d; background: linear-gradient(135deg, var(--accent), var(--accent2)); font-weight: 800; font-size: 12px; border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); }
+    .gallery.two { grid-template-columns: repeat(2, 1fr); }
+    .shot { position: relative; cursor: zoom-in; background: #101826; overflow: hidden; }
+    .shot img { width: 100%; aspect-ratio: 16/9; object-fit: cover; transition: transform .22s ease, opacity .22s ease; }
+    .shot:hover img { transform: scale(1.026); opacity: .92; }
+    .shot-caption { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 9px 10px; border-radius: 12px; background: rgba(0,0,0,.50); backdrop-filter: blur(10px); font-size: 12px; color: #eaf4ff; }
+    .project-body { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px; }
+    .diagram-shot { background: #f7faff; }
+    .diagram-shot img { aspect-ratio: 16/9; object-fit: contain; background: #f7faff; padding: 8px; }
+    .architecture-panel { display: grid; grid-template-columns: 1.05fr .95fr; gap: 20px; padding: 20px; border-top: 1px solid var(--line); }
+    .architecture-panel .bar-card { align-self: start; }
+    @media (max-width: 980px) { .architecture-panel { grid-template-columns: 1fr; } }
+
+    .bullet { margin: 0; padding-left: 19px; color: var(--muted); }
+    .bullet li { margin: 7px 0; }
+    .od-panel { display: grid; grid-template-columns: 1.08fr .92fr; gap: 1px; background: var(--line); }
+    .od-image img { height: 100%; min-height: 420px; object-fit: cover; }
+    .od-metrics { background: rgba(9,15,27,.96); padding: 20px; display: grid; gap: 14px; align-content: start; }
+    .od-metrics h4 { margin: 0; font-size: 18px; letter-spacing: -.02em; }
+    .od-metrics p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .timeline { display: grid; gap: 14px; }
+    .role { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 20px; }
+    .role-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .role h3 { margin: 0; font-size: 20px; letter-spacing: -.03em; }
+    .role time { color: var(--accent); font-weight: 700; }
+    .role ul { margin: 12px 0 0; padding-left: 19px; color: var(--muted); }
+
+    .skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .skill { border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px; background: rgba(255,255,255,.055); }
+    .skill b { color: var(--text); }
+    .skill span { color: var(--muted); }
+
+    .footer { padding: 34px 0 44px; color: var(--subtle); border-top: 1px solid var(--line); margin-top: 40px; }
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.86); display: none; z-index: 200; padding: 28px; }
+    .lightbox.open { display: grid; place-items: center; }
+    .lightbox-inner { width: min(1320px, 96vw); }
+    .lightbox img { max-height: 82vh; width: 100%; object-fit: contain; border-radius: 18px; box-shadow: var(--shadow); }
+    .lightbox-caption { color: #e8f4ff; margin-top: 10px; display: flex; justify-content: space-between; gap: 16px; }
+    .close { border: 1px solid rgba(255,255,255,.20); background: rgba(255,255,255,.08); color: white; border-radius: 999px; padding: 7px 12px; cursor: pointer; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .project-body, .od-panel, .seg-panel { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .metric-strip { grid-template-columns: repeat(2, 1fr); }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .od-image img { min-height: 280px; }
     }
-
-    .resume {
-      background: var(--card);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-      overflow: hidden;
-      border: 1px solid rgba(229, 231, 235, 0.8);
-    }
-
-    .hero {
-      padding: 40px;
-      background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
-      color: #fff;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: 40px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .hero p {
-      margin: 10px 0 0;
-      font-size: 18px;
-      opacity: 0.95;
-    }
-
-    .content {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-    }
-
-    .sidebar {
-      padding: 32px 24px;
-      background: #f9fbff;
-      border-right: 1px solid var(--line);
-    }
-
-    .main {
-      padding: 32px;
-    }
-
-    .section {
-      margin-bottom: 30px;
-    }
-
-    .section:last-child {
-      margin-bottom: 0;
-    }
-
-    .section h2 {
-      margin: 0 0 14px;
-      font-size: 18px;
-      color: var(--primary);
-      border-left: 4px solid var(--primary);
-      padding-left: 10px;
-    }
-
-    .info-item {
-      margin-bottom: 10px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .info-item strong {
-      color: var(--text);
-      display: inline-block;
-      min-width: 72px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .tag {
-      background: var(--tag);
-      color: var(--primary);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      border: 1px solid #dbeafe;
-    }
-
-    .timeline-item {
-      margin-bottom: 22px;
-      padding-bottom: 22px;
-      border-bottom: 1px dashed var(--line);
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .timeline-item h3 {
-      margin: 0;
-      font-size: 17px;
-    }
-
-    .timeline-item .meta {
-      margin: 4px 0 10px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .timeline-item ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    .timeline-item li {
-      margin-bottom: 8px;
-    }
-
-    .summary {
-      font-size: 15px;
-      color: #374151;
-    }
-
-    @media (max-width: 768px) {
-      .content {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .hero {
-        padding: 30px 24px;
-      }
-
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .main {
-        padding: 24px;
-      }
+    @media (max-width: 650px) {
+      .shell { width: min(100% - 26px, var(--max)); }
+      .hero { padding-top: 52px; }
+      .cards, .gallery, .gallery.two, .skill-grid, .metric-strip, .seg-chip-grid { grid-template-columns: 1fr; }
+      .metric-mini { grid-template-columns: 1fr; }
+      .project-head { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 92px 1fr 48px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="resume">
-      <header class="hero">
-        <h1>你的名字</h1>
-        <p>前端开发工程师 / 全栈开发工程师</p>
-      </header>
-
-      <div class="content">
-        <aside class="sidebar">
-          <section class="section">
-            <h2>基本信息</h2>
-            <div class="info-item"><strong>电话：</strong>138-0000-0000</div>
-            <div class="info-item"><strong>邮箱：</strong>your@email.com</div>
-            <div class="info-item"><strong>城市：</strong>中国 · 你的城市</div>
-            <div class="info-item"><strong>GitHub：</strong>github.com/yourname</div>
-          </section>
-
-          <section class="section">
-            <h2>专业技能</h2>
-            <div class="tags">
-              <span class="tag">HTML5</span>
-              <span class="tag">CSS3</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">TypeScript</span>
-              <span class="tag">Vue</span>
-              <span class="tag">React</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">Git</span>
-            </div>
-          </section>
-
-          <section class="section">
-            <h2>个人优势</h2>
-            <div class="summary">
-              具备良好的编码习惯和团队协作能力，关注用户体验与页面性能优化，能够独立完成项目开发与上线。
-            </div>
-          </section>
-        </aside>
-
-        <main class="main">
-          <section class="section">
-            <h2>个人简介</h2>
-            <p class="summary">
-              这里填写你的个人简介，例如：拥有 3 年以上 Web 开发经验，熟悉前端工程化、组件化开发，具备一定后端开发能力，能够快速理解业务并推动项目落地。
-            </p>
-          </section>
-
-          <section class="section">
-            <h2>工作经历</h2>
-            <div class="timeline-item">
-              <h3>某某科技有限公司 · 前端开发工程师</h3>
-              <div class="meta">2022.07 - 至今</div>
-              <ul>
-                <li>负责公司核心业务系统的前端开发与维护，提升页面交互体验与开发效率。</li>
-                <li>参与组件库建设与公共模块封装，减少重复开发成本。</li>
-                <li>优化项目首屏加载速度与接口交互体验，提升系统整体性能。</li>
-              </ul>
-            </div>
-            <div class="timeline-item">
-              <h3>某某网络有限公司 · Web 开发工程师</h3>
-              <div class="meta">2020.07 - 2022.06</div>
-              <ul>
-                <li>参与企业官网、活动页和后台管理系统开发，支持多个业务线快速迭代。</li>
-                <li>配合产品与设计完成需求评审、功能实现与问题修复。</li>
-                <li>编写技术文档并协助新人快速熟悉项目结构与开发流程。</li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="section">
-            <h2>项目经历</h2>
-            <div class="timeline-item">
-              <h3>后台管理系统重构项目</h3>
-              <div class="meta">技术栈：Vue / TypeScript / Element Plus</div>
-              <ul>
-                <li>主导旧系统模块化重构，统一页面结构与交互规范。</li>
-                <li>封装通用表格、表单与弹窗组件，提高开发复用率。</li>
-                <li>推动代码规范落地，提升团队协作效率与代码质量。</li>
-              </ul>
-            </div>
-            <div class="timeline-item">
-              <h3>企业官网与品牌展示站</h3>
-              <div class="meta">技术栈：HTML / CSS / JavaScript</div>
-              <ul>
-                <li>负责页面开发、响应式适配和动画效果实现。</li>
-                <li>优化 SEO 基础配置与页面加载性能，提升搜索曝光与访问体验。</li>
-                <li>完成部署上线并持续维护内容更新。</li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="section">
-            <h2>教育经历</h2>
-            <div class="timeline-item">
-              <h3>某某大学 · 计算机科学与技术</h3>
-              <div class="meta">2016.09 - 2020.06</div>
-              <ul>
-                <li>主修课程：数据结构、操作系统、计算机网络、数据库原理、软件工程等。</li>
-              </ul>
-            </div>
-          </section>
-        </main>
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top"><span class="brand-mark">林</span><span>林皞 · Resume</span></a>
+      <div class="nav-links">
+        <a href="#strengths">工程优势</a>
+        <a href="#gallery">项目与指标</a>
+        <a href="#experience">经历</a>
+        <a href="#skills">技术栈</a>
       </div>
+      <a class="btn primary" href="mailto:18795959682@163.com">联系我</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow">AI-assisted Engineering · E2E Perception · 3D/4D Data Loop</div>
+          <h1>林皞</h1>
+          <div class="role-line">端到端算法专家 / 高性能训练框架 / 4D 数据闭环</div>
+          <p class="lead">9 年自动驾驶感知与端到端算法经验，长期从事真实世界 3D/4D 场景表征、云端自动标注、高性能训练框架和数据闭环建设。擅长使用 Copilot / Codex 进行 AI-assisted rapid engineering，将算法想法快速推进到可运行、可验证、可上线的工程版本。</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#gallery">查看项目与指标</a>
+            <a class="btn" href="#experience">查看经历</a>
+            <a class="btn" href="mailto:18795959682@163.com">18795959682@163.com</a>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Copilot / Codex</span>
+            <span class="tag">PyTorch 2.x</span>
+            <span class="tag">LanceDB</span>
+            <span class="tag">viser 4D 可视化</span>
+            <span class="tag">Fusion4D</span>
+            <span class="tag">S-D4RT</span>
+          </div>
+        </div>
+        <div class="hero-card shot" data-full="assets/fusion4d_production_02.jpeg" data-caption="Fusion4D 4D 预标注产线最终可视化">
+          <img src="assets/thumbs/fusion4d_production_02.jpeg" alt="Fusion4D 4D 预标注产线最终可视化" />
+          <div class="hero-overlay">
+            <div class="metric-mini">
+              <div><strong>100w+</strong><span>clip 预刷生产</span></div>
+              <div><strong>6000w+</strong><span>帧数据处理</span></div>
+              <div><strong>1个月</strong><span>Autolabeling 上线</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="strengths">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">近期核心工程优势</h2>
+            <p class="section-desc">核心不是只会调模型，而是用 AI coding agent + 显式接口设计 + profile-driven validation，把复杂算法工程快速推到可用、可测、可上线。</p>
+          </div>
+        </div>
+        <div class="cards">
+          <div class="card featured"><div class="num">AI</div><h3>AI-assisted Engineering</h3><p>熟练使用 Copilot / Codex 进行快速原型开发、工程重构、接口设计、性能 profiling 与复杂系统迭代。</p></div>
+          <div class="card featured"><div class="num">IO</div><h3>Interface-first Engineering</h3><p>显式定义 model input/output shape、batch data schema、模块边界、loss / metric 协议与配置结构。</p></div>
+          <div class="card featured"><div class="num">P</div><h3>Profile-driven Validation</h3><p>围绕参数量、显存、吞吐、IO、训练时长和推理代价做定量验证，确保工程真正可落地。</p></div>
+          <div class="card"><h3>3D/4D 场景数据闭环</h3><p>高精度 fleet、云端自动标注、点云语义分割、3D 检测、MOT、多帧融合与长尾挖掘。</p></div>
+          <div class="card"><h3>高性能训练基础设施</h3><p>PyTorch 2.x、GPU 集群、LanceDB、高性能 IO、viser 4D 可视化与训练框架平台化。</p></div>
+          <div class="card"><h3>多传感器几何与部署优化</h3><p>LiDAR-Camera 标定、时空对齐、LIO-SLAM、CUDA、TensorRT、TensorCore 与 torch.compile。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">项目指标与可视化</h2>
+            <p class="section-desc">OD 指标与可视化放在同一模块；PTV3 单帧点云语义分割加入 IoU / Accuracy 指标；Fusion4D 展示 4D 预标注产线最终可视化；S-D4RT 展示几何预训练整体架构。</p>
+          </div>
+        </div>
+
+        <article class="project">
+          <div class="project-head">
+            <div><h3>OD 指标与可视化 · EGGY</h3><p>指标来自 metric_compare 中的 EGGY 结果；检测结果用于 Fusion4D 中的动态点增强和 object-level temporal fusion。</p></div>
+            <span class="pill">OD Metrics + Visualization</span>
+          </div>
+          <div class="od-panel">
+            <div class="shot od-image" data-full="assets/od_visualization.jpeg" data-caption="OD 可视化：检测结果、track ID、多相机视锥与 LiDAR 点云融合关系">
+              <img src="assets/thumbs/od_visualization.jpeg" alt="OD 可视化">
+              <div class="shot-caption">OD · 检测结果、track ID、多相机视锥与 LiDAR 点云</div>
+            </div>
+            <div class="od-metrics">
+              <div>
+                <h4>Overall Metrics</h4>
+                <p>100 clips / 6291 frames / 248,248 GTs</p>
+              </div>
+              <div class="metric-strip">
+                <div class="metric-card"><b>77.21</b><span>mAP</span><em>distance mean</em></div>
+                <div class="metric-card"><b>71.25</b><span>AP@0.5</span><em>strict threshold</em></div>
+                <div class="metric-card"><b>80.77</b><span>AP@4.0</span><em>4.0m threshold</em></div>
+                <div class="metric-card"><b>79.49</b><span>NDS</span><em>nuScenes-style</em></div>
+              </div>
+              <div class="bar-card">
+                <h4>Class Overall mAP%</h4>
+                <div class="bar-row"><span>SED_CAR</span><div class="bar-track"><div class="bar" style="width:91.05%;"></div></div><span class="bar-value">91.05</span></div>
+                <div class="bar-row"><span>BUS</span><div class="bar-track"><div class="bar" style="width:84.53%;"></div></div><span class="bar-value">84.53</span></div>
+                <div class="bar-row"><span>LTRUCKS</span><div class="bar-track"><div class="bar" style="width:82.23%;"></div></div><span class="bar-value">82.23</span></div>
+                <div class="bar-row"><span>CYCLIST</span><div class="bar-track"><div class="bar" style="width:76.35%;"></div></div><span class="bar-value">76.35</span></div>
+                <div class="bar-row"><span>PEDESTRIAN</span><div class="bar-track"><div class="bar" style="width:73%;"></div></div><span class="bar-value">73.00</span></div>
+                <div class="bar-row"><span>TRICYCLIST</span><div class="bar-track"><div class="bar" style="width:56.11%;"></div></div><span class="bar-value">56.11</span></div>
+              </div>
+              <div class="bar-card">
+                <h4>远距离 mAP% 片段</h4>
+                <div class="bar-row"><span>SED_CAR 100–150m</span><div class="bar-track"><div class="bar" style="width:73.63%;"></div></div><span class="bar-value">73.63</span></div>
+                <div class="bar-row"><span>LTRUCKS 100–150m</span><div class="bar-track"><div class="bar" style="width:68.42%;"></div></div><span class="bar-value">68.42</span></div>
+                <div class="bar-row"><span>BUS 100–150m</span><div class="bar-track"><div class="bar" style="width:58.49%;"></div></div><span class="bar-value">58.49</span></div>
+                <div class="bar-row"><span>SED_CAR 150m+</span><div class="bar-track"><div class="bar" style="width:55.82%;"></div></div><span class="bar-value">55.82</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head"><div><h3>PTV3 单帧点云语义分割指标与可视化</h3><p>用于为云端 4D autolabeling 提供道路、车辆、行人、骑行者、植被、建筑物等场景语义先验；指标展示 IoU / Accuracy。</p></div><span class="pill">Segmentation Metrics + Visualization</span></div>
+          <div class="seg-panel">
+            <div class="seg-copy">
+              <h4>关键类别指标</h4>
+              <p>点云语义分割覆盖 16 类场景元素，下面展示自动标注链路中最关键的类别效果。</p>
+              <div class="seg-chip-grid">
+                <div class="seg-chip"><b>Vehicle</b><span>0.9941</span><em>IoU / Acc 0.9969</em></div>
+                <div class="seg-chip"><b>Road</b><span>0.9782</span><em>IoU / Acc 0.9885</em></div>
+                <div class="seg-chip"><b>Rider</b><span>0.9728</span><em>IoU / Acc 0.9883</em></div>
+                <div class="seg-chip"><b>Pedestrian</b><span>0.9274</span><em>IoU / Acc 0.9544</em></div>
+              </div>
+            </div>
+            <div class="bar-card">
+              <h4>Key Class IoU</h4>
+              <div class="bar-row"><span>Vehicle</span><div class="bar-track"><div class="bar" style="width:99.41%;"></div></div><span class="bar-value">0.9941</span></div>
+              <div class="bar-row"><span>Road</span><div class="bar-track"><div class="bar" style="width:97.82%;"></div></div><span class="bar-value">0.9782</span></div>
+              <div class="bar-row"><span>Rider</span><div class="bar-track"><div class="bar" style="width:97.28%;"></div></div><span class="bar-value">0.9728</span></div>
+              <div class="bar-row"><span>Vegetation</span><div class="bar-track"><div class="bar" style="width:95.58%;"></div></div><span class="bar-value">0.9558</span></div>
+              <div class="bar-row"><span>Pedestrian</span><div class="bar-track"><div class="bar" style="width:92.74%;"></div></div><span class="bar-value">0.9274</span></div>
+              <div class="bar-row"><span>Building</span><div class="bar-track"><div class="bar" style="width:88.61%;"></div></div><span class="bar-value">0.8861</span></div>
+              <div class="bar-row"><span>Sidewalk</span><div class="bar-track"><div class="bar" style="width:86.22%;"></div></div><span class="bar-value">0.8622</span></div>
+              <div class="bar-row"><span>Curb</span><div class="bar-track"><div class="bar" style="width:79.21%;"></div></div><span class="bar-value">0.7921</span></div>
+            </div>
+            <details class="metrics-details">
+              <summary>查看 16 类点云分割 IoU / Accuracy 明细</summary>
+              <div class="seg-table-wrap">
+                <table class="seg-table">
+                  <thead><tr><th>ID</th><th>Class</th><th>IoU</th><th>Accuracy</th><th>Raw Classes</th></tr></thead>
+                  <tbody>
+                    <tr><td>0</td><td>Empty / Free</td><td>0.0000</td><td>0.0000</td><td>255</td></tr>
+                    <tr><td>1</td><td>Road</td><td>0.9782</td><td>0.9885</td><td>road, laneline, stopline, crossline, lanearrow, bump</td></tr>
+                    <tr><td>2</td><td>Sidewalk</td><td>0.8622</td><td>0.9275</td><td>sidewalk</td></tr>
+                    <tr><td>3</td><td>Curb</td><td>0.7921</td><td>0.8867</td><td>curb</td></tr>
+                    <tr><td>4</td><td>Cone</td><td>0.6900</td><td>0.8324</td><td>Cone</td></tr>
+                    <tr><td>5</td><td>Obstacle</td><td>0.7049</td><td>0.8471</td><td>electricity_box, blocking_objects, animal, movable_object, bridge, etc.</td></tr>
+                    <tr><td>6</td><td>Trunk</td><td>0.9073</td><td>0.9537</td><td>trunk</td></tr>
+                    <tr><td>7</td><td>Building</td><td>0.8861</td><td>0.9397</td><td>building</td></tr>
+                    <tr><td>8</td><td>Vehicle</td><td>0.9941</td><td>0.9969</td><td>bus, truck, car, construction_vehicle, cart, pedicab, other_vehicles</td></tr>
+                    <tr><td>9</td><td>Pole / Sign</td><td>0.8599</td><td>0.9182</td><td>pole, trafficlight, trafficsign</td></tr>
+                    <tr><td>10</td><td>Vegetation / Terrain</td><td>0.9558</td><td>0.9767</td><td>vegetation, terrain, separation</td></tr>
+                    <tr><td>11</td><td>Fence</td><td>0.8332</td><td>0.9046</td><td>fence, flowerbed</td></tr>
+                    <tr><td>12</td><td>Cycle</td><td>0.8367</td><td>0.9272</td><td>bicycle, motorcycle</td></tr>
+                    <tr><td>13</td><td>Rider</td><td>0.9728</td><td>0.9883</td><td>bicyclist, motorcyclist</td></tr>
+                    <tr><td>14</td><td>Pedestrian</td><td>0.9274</td><td>0.9544</td><td>pedestrian</td></tr>
+                    <tr><td>15</td><td>Noise / Shadow</td><td>0.4816</td><td>0.5213</td><td>shadow, Noise, others</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </div>
+          <div class="gallery">
+            <div class="shot" data-full="assets/ptv3_single_frame_01.jpeg" data-caption="PTV3 单帧分割结果 01"><img src="assets/thumbs/ptv3_single_frame_01.jpeg" alt="PTV3 单帧分割结果 01"><div class="shot-caption">PTV3 · 单帧分割 01</div></div>
+            <div class="shot" data-full="assets/ptv3_single_frame_02.jpeg" data-caption="PTV3 单帧分割结果 02"><img src="assets/thumbs/ptv3_single_frame_02.jpeg" alt="PTV3 单帧分割结果 02"><div class="shot-caption">PTV3 · 单帧分割 02</div></div>
+            <div class="shot" data-full="assets/ptv3_single_frame_03.jpeg" data-caption="PTV3 单帧分割结果 03"><img src="assets/thumbs/ptv3_single_frame_03.jpeg" alt="PTV3 单帧分割结果 03"><div class="shot-caption">PTV3 · 单帧分割 03</div></div>
+          </div>
+          <div class="project-body"><ul class="bullet"><li>单帧 LiDAR 语义分割结果，作为后续 4D 场景融合的语义输入。</li><li>覆盖道路、路沿、车辆、行人、骑行者、杆牌、植被等 16 类场景元素。</li></ul><ul class="bullet"><li>用于支撑端到端训练数据生产、自动标注质检和长尾 case 分析。</li><li>可与 viser 4D 可视化结合，快速定位数据与模型问题。</li></ul></div>
+        </article>
+
+        <article class="project">
+          <div class="project-head"><div><h3>Fusion4D · 4D 预标注产线最终可视化</h3><p>静态点基于 global pose 多帧融合，动态目标基于 OD + MOT 做对象级聚合，形成可用于训练闭环的 4D 动态场景数据。</p></div><span class="pill">4D Production Output</span></div>
+          <div class="gallery two">
+            <div class="shot" data-full="assets/fusion4d_production_01.jpeg" data-caption="Fusion4D 4D 预标注产线最终可视化 01"><img src="assets/thumbs/fusion4d_production_01.jpeg" alt="Fusion4D 4D 预标注产线最终可视化 01"><div class="shot-caption">Fusion4D · 产线最终可视化 01</div></div>
+            <div class="shot" data-full="assets/fusion4d_production_02.jpeg" data-caption="Fusion4D 4D 预标注产线最终可视化 02"><img src="assets/thumbs/fusion4d_production_02.jpeg" alt="Fusion4D 4D 预标注产线最终可视化 02"><div class="shot-caption">Fusion4D · 产线最终可视化 02</div></div>
+          </div>
+          <div class="project-body"><ul class="bullet"><li>静态点：基于 LIO-SLAM global pose 做多帧全局融合。</li><li>动态点：基于 OD detector + MOT trackID 做 object-level temporal fusion。</li></ul><ul class="bullet"><li>通过异步 PCD 写入与云端并行调度提升大规模生产效率。</li><li>产线已完成约 100w clip / 6000w 帧预刷生产。</li></ul></div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <div><h3>S-D4RT 几何预训练 · Streaming D4RT-Geo Architecture</h3><p>将 D4RT 的 query-based geometry learning 迁移到自动驾驶多相机、LiDAR、ego pose 场景，面向流式 4D 几何表征与端到端任务预训练。</p></div>
+            <span class="pill">Geometry Pretraining</span>
+          </div>
+          <div class="shot diagram-shot" data-full="assets/sd4rt_geo_pretrain.png" data-caption="S-D4RT-Geo：流式 4D 几何预训练整体架构 / Streaming D4RT-Geo Architecture">
+            <img src="assets/thumbs/sd4rt_geo_pretrain.png" alt="S-D4RT-Geo 流式 4D 几何预训练整体架构">
+            <div class="shot-caption">S-D4RT-Geo · 流式 4D 几何预训练整体架构</div>
+          </div>
+          <div class="architecture-panel">
+            <ul class="bullet">
+              <li>在线因果推理主干：仅使用历史与当前 11V 图像、标定初值和 LIO 位姿初值，不看未来。</li>
+              <li>Calibration Refiner 输出残差修正后的相机内外参，并进入 observation lifter 与 streaming memory update。</li>
+              <li>Gated streaming memory 维护 ego-centric 4D memory，为 Ray-D4RT 点查询解码器提供时空几何上下文。</li>
+            </ul>
+            <ul class="bullet">
+              <li>查询解码器沿相机射线采样少量候选深度 token，通过 query-to-candidate attention 聚合深度分布并输出 ego-frame 3D point。</li>
+              <li>训练监督以单帧 LiDAR 稀疏 metric anchor 为主，可选 same-time multi-view gsplat rendering 约束几何与外观一致性。</li>
+              <li>使用 Codex 做 AI-assisted research prototyping，并围绕参数量、显存、吞吐、训练时长和推理代价做 profile-driven validation。</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="shell">
+        <div class="section-head"><div><h2 class="section-title">工作经历</h2><p class="section-desc">简历主体保留工程事实和可量化结果，网页中把图片与数据指标放在项目可视化区域。</p></div></div>
+        <div class="timeline">
+          <article class="role">
+            <div class="role-top"><h3>岚图汽车｜E2E Perception Expert</h3><time>2025 - 至今</time></div>
+            <ul>
+              <li>上海端到端算法团队第一位员工，参与团队从 0 到 1 建设；累计面试候选人 100+。</li>
+              <li>负责云端 4D autolabeling、几何预训练、高性能训练框架、GPU 训练集群与高精度数据采集 fleet 建设。</li>
+              <li>主导高精度 fleet 技术方案选型与规模化建设，采用 1 × Pandar128 + 4 × QT128 全视野无盲角 LiDAR 配置，已部署 60 辆。</li>
+              <li>2025 年度获得部门最高绩效 A+，获得领域最高奖金。</li>
+            </ul>
+          </article>
+          <article class="role">
+            <div class="role-top"><h3>镁佳科技 Megatronix｜Staff Perception Algorithm Engineer</h3><time>2022.01 - 2024.05</time></div>
+            <ul>
+              <li>负责 AVP 场景下 4D 数据真值系统、算法数据闭环、自研标定间、地下停车场 LIO-SLAM 建图、点云预标注和多相机联合标注 pipeline。</li>
+              <li>自研标定间采用 ArUco marker + Leica 激光追踪仪，墙面与地面共铺设 426 块 ArUco marker；LiDAR-Camera 重投影误差达到亚像素级。</li>
+              <li>系统稳定运行后，每月可稳定生产 15w+ 帧标注数据。</li>
+            </ul>
+          </article>
+          <article class="role">
+            <div class="role-top"><h3>蔚来汽车 NIO｜Staff Algorithm Engineer</h3><time>2018.03 - 2022.01</time></div>
+            <ul>
+              <li>负责 DMS、APA 自动泊车感知和高性能推理优化等量产项目。</li>
+              <li>APA 使用 4 路鱼眼相机，交付时训练样本约 500w，2020 年 6 月在 NIO ES6/ES8 量产上线。</li>
+              <li>DMS 通过 TensorRT FP16、网络切分和 CUDA stream 模型并行，将推理速度优化至 25-30ms。</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="shell">
+        <div class="section-head"><div><h2 class="section-title">技术栈</h2></div></div>
+        <div class="skill-grid">
+          <div class="skill"><b>AI-assisted Tools：</b><span>Copilot, Codex</span></div>
+          <div class="skill"><b>语言：</b><span>Python, C/C++, CUDA C, PTX</span></div>
+          <div class="skill"><b>框架：</b><span>PyTorch, PyTorch 2.x, Caffe</span></div>
+          <div class="skill"><b>训练系统：</b><span>LanceDB, PyTorch Distributed, high-performance IO, dataset schema design</span></div>
+          <div class="skill"><b>三维与点云：</b><span>LiDAR-Camera calibration, LIO-SLAM, FAST-LIO2, point cloud segmentation, 3D detection, MOT, 4D fusion</span></div>
+          <div class="skill"><b>部署优化：</b><span>TensorRT, CUDA stream, FP16/INT8, TensorCore, torch.compile</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">© 林皞 · AI-assisted Engineering · 3D/4D Scene Representation · Resume site</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <img id="lightbox-img" src="" alt="" />
+      <div class="lightbox-caption"><span id="lightbox-caption"></span><button class="close" id="lightbox-close">关闭</button></div>
     </div>
   </div>
+  <script>
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCap = document.getElementById('lightbox-caption');
+    const close = () => { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); lbImg.src = ''; };
+    document.querySelectorAll('.shot').forEach(el => {
+      el.addEventListener('click', () => {
+        lbImg.src = el.dataset.full;
+        lbImg.alt = el.dataset.caption || '';
+        lbCap.textContent = el.dataset.caption || '';
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+      });
+    });
+    document.getElementById('lightbox-close').addEventListener('click', close);
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  </script>
 </body>
 </html>

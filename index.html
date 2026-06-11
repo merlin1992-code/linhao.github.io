@@ -44,10 +44,10 @@
     .nav { position: sticky; top: 0; z-index: 50; background: rgba(7,11,18,.72); border-bottom: 1px solid var(--line); backdrop-filter: blur(18px); }
     .nav-inner { height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .brand { display: flex; align-items: center; gap: 12px; font-weight: 850; letter-spacing: -.02em; }
-    .brand-mark { width: 36px; height: 36px; border-radius: 13px; display: grid; place-items: center; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #04111e; box-shadow: 0 0 30px rgba(104,225,253,.38); }
+    .brand-mark { width: 36px; height: 36px; border-radius: 13px; display: grid; place-items: center; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #04111e; box-shadow: 0 10px 34px rgba(104,225,253,.32); }
     .nav-links { display: flex; align-items: center; gap: 17px; color: var(--muted); font-size: 14px; }
     .nav-links a:hover { color: var(--text); }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.075); color: var(--text); border-radius: 999px; padding: 10px 15px; font-size: 14px; transition: .16s ease; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.075); color: var(--text); border-radius: 999px; padding: 11px 15px; font-size: 14px; font-weight: 700; transition: .2s ease; }
     .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.30); }
     .btn.primary { border-color: rgba(104,225,253,.45); background: linear-gradient(135deg, rgba(104,225,253,.25), rgba(167,139,250,.22)); }
 
@@ -55,7 +55,7 @@
     .hero-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 46px; align-items: center; }
     .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .09em; font-weight: 800; font-size: 13px; }
     h1 { font-size: clamp(48px, 6.2vw, 76px); line-height: .92; margin: 12px 0 10px; letter-spacing: -.055em; }
-    .role-line { font-size: clamp(22px, 3.4vw, 36px); line-height: 1.05; margin: 0 0 18px; letter-spacing: -.045em; color: transparent; background: linear-gradient(135deg, var(--accent), #e9ddff 45%, var(--accent2)); -webkit-background-clip: text; background-clip: text; font-weight: 850; }
+    .role-line { font-size: clamp(22px, 3.4vw, 36px); line-height: 1.05; margin: 0 0 18px; letter-spacing: -.045em; color: transparent; background: linear-gradient(135deg, var(--accent), #e9ddff 45%, var(--accent2)); -webkit-background-clip: text; background-clip: text; }
     .lead { font-size: clamp(16px, 1.65vw, 19px); color: #dce8fb; max-width: 620px; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
     .tag-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
@@ -121,7 +121,7 @@
     .shot { position: relative; cursor: zoom-in; background: #101826; overflow: hidden; }
     .shot img { width: 100%; aspect-ratio: 16/9; object-fit: cover; transition: transform .22s ease, opacity .22s ease; }
     .shot:hover img { transform: scale(1.026); opacity: .92; }
-    .shot-caption { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 9px 10px; border-radius: 12px; background: rgba(0,0,0,.50); backdrop-filter: blur(10px); font-size: 12px; color: #eaf4ff; }
+    .shot-caption { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 9px 10px; border-radius: 12px; background: rgba(0,0,0,.50); backdrop-filter: blur(10px); font-size: 12px; color: #eff7ff; }
     .project-body { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px; }
     .diagram-shot { background: #f7faff; }
     .diagram-shot img { aspect-ratio: 16/9; object-fit: contain; background: #f7faff; padding: 8px; }
@@ -196,7 +196,7 @@
           <div class="eyebrow">AI-assisted Engineering · E2E Perception · 3D/4D Data Loop</div>
           <h1>林皞</h1>
           <div class="role-line">端到端算法专家 / 高性能训练框架 / 4D 数据闭环</div>
-          <p class="lead">9 年自动驾驶感知与端到端算法经验，长期从事真实世界 3D/4D 场景表征、云端自动标注、高性能训练框架和数据闭环建设。擅长使用 Copilot / Codex 进行 AI-assisted rapid engineering，将算法想法快速推进到可运行、可验证、可上线的工程版本。</p>
+          <p class="lead">9 年自动驾驶感知与端到端算法经验，长期从事真实世界 3D/4D 场景表征、云端自动标注、高性能训练框架和数据闭环建设。擅长使用 AI coding agent + 显式接口设计 + profile-driven validation，把复杂算法工程快速推进到可用、可测、可扩展。</p>
           <div class="hero-actions">
             <a class="btn primary" href="#gallery">查看项目与指标</a>
             <a class="btn" href="#experience">查看经历</a>
@@ -211,8 +211,8 @@
             <span class="tag">S-D4RT</span>
           </div>
         </div>
-        <div class="hero-card shot" data-full="assets/fusion4d_production_02.jpeg" data-caption="Fusion4D 4D 预标注产线最终可视化">
-          <img src="assets/thumbs/fusion4d_production_02.jpeg" alt="Fusion4D 4D 预标注产线最终可视化" />
+        <div class="hero-card shot" data-full="/linhao.github.io/assets/fusion4d_production_02.jpeg" data-caption="Fusion4D 4D 预标注产线最终可视化">
+          <img src="/linhao.github.io/assets/thumbs/fusion4d_production_02.jpeg" alt="Fusion4D 4D 预标注产线最终可视化" />
           <div class="hero-overlay">
             <div class="metric-mini">
               <div><strong>100w+</strong><span>clip 预刷生产</span></div>
@@ -233,8 +233,8 @@
           </div>
         </div>
         <div class="cards">
-          <div class="card featured"><div class="num">AI</div><h3>AI-assisted Engineering</h3><p>熟练使用 Copilot / Codex 进行快速原型开发、工程重构、接口设计、性能 profiling 与复杂系统迭代。</p></div>
-          <div class="card featured"><div class="num">IO</div><h3>Interface-first Engineering</h3><p>显式定义 model input/output shape、batch data schema、模块边界、loss / metric 协议与配置结构。</p></div>
+          <div class="card featured"><div class="num">AI</div><h3>AI-assisted Engineering</h3><p>熟练使用 Copilot / Codex 进行快速原型开发、工程重构、接口设计、性能 profiling 与实验脚本整理。</p></div>
+          <div class="card featured"><div class="num">IO</div><h3>Interface-first Engineering</h3><p>显式定义 model input/output shape、batch data schema、模块边界、loss / metric 协议与数据契约，降低系统复杂度。</p></div>
           <div class="card featured"><div class="num">P</div><h3>Profile-driven Validation</h3><p>围绕参数量、显存、吞吐、IO、训练时长和推理代价做定量验证，确保工程真正可落地。</p></div>
           <div class="card"><h3>3D/4D 场景数据闭环</h3><p>高精度 fleet、云端自动标注、点云语义分割、3D 检测、MOT、多帧融合与长尾挖掘。</p></div>
           <div class="card"><h3>高性能训练基础设施</h3><p>PyTorch 2.x、GPU 集群、LanceDB、高性能 IO、viser 4D 可视化与训练框架平台化。</p></div>
@@ -248,7 +248,7 @@
         <div class="section-head">
           <div>
             <h2 class="section-title">项目指标与可视化</h2>
-            <p class="section-desc">OD 指标与可视化放在同一模块；PTV3 单帧点云语义分割加入 IoU / Accuracy 指标；Fusion4D 展示 4D 预标注产线最终可视化；S-D4RT 展示几何预训练整体架构。</p>
+            <p class="section-desc">OD 指标与可视化放在同一模块；PTV3 单帧点云语义分割加入 IoU / Accuracy 指标；Fusion4D 展示 4D 预标注产线最终可视化；S-D4RT 展示流式几何预训练架构。</p>
           </div>
         </div>
 
@@ -258,8 +258,8 @@
             <span class="pill">OD Metrics + Visualization</span>
           </div>
           <div class="od-panel">
-            <div class="shot od-image" data-full="assets/od_visualization.jpeg" data-caption="OD 可视化：检测结果、track ID、多相机视锥与 LiDAR 点云融合关系">
-              <img src="assets/thumbs/od_visualization.jpeg" alt="OD 可视化">
+            <div class="shot od-image" data-full="/linhao.github.io/assets/od_visualization.jpeg" data-caption="OD 可视化：检测结果、track ID、多相机视锥与 LiDAR 点云融合关系">
+              <img src="/linhao.github.io/assets/thumbs/od_visualization.jpeg" alt="OD 可视化">
               <div class="shot-caption">OD · 检测结果、track ID、多相机视锥与 LiDAR 点云</div>
             </div>
             <div class="od-metrics">
@@ -294,7 +294,7 @@
         </article>
 
         <article class="project">
-          <div class="project-head"><div><h3>PTV3 单帧点云语义分割指标与可视化</h3><p>用于为云端 4D autolabeling 提供道路、车辆、行人、骑行者、植被、建筑物等场景语义先验；指标展示 IoU / Accuracy。</p></div><span class="pill">Segmentation Metrics + Visualization</span></div>
+          <div class="project-head"><div><h3>PTV3 单帧点云语义分割指标与可视化</h3><p>用于为云端 4D autolabeling 提供道路、车辆、行人、骑行者、植被、建筑物等静动态语义先验。</p></div><span class="pill">Point Cloud Segmentation</span></div>
           <div class="seg-panel">
             <div class="seg-copy">
               <h4>关键类别指标</h4>
@@ -345,29 +345,29 @@
             </details>
           </div>
           <div class="gallery">
-            <div class="shot" data-full="assets/ptv3_single_frame_01.jpeg" data-caption="PTV3 单帧分割结果 01"><img src="assets/thumbs/ptv3_single_frame_01.jpeg" alt="PTV3 单帧分割结果 01"><div class="shot-caption">PTV3 · 单帧分割 01</div></div>
-            <div class="shot" data-full="assets/ptv3_single_frame_02.jpeg" data-caption="PTV3 单帧分割结果 02"><img src="assets/thumbs/ptv3_single_frame_02.jpeg" alt="PTV3 单帧分割结果 02"><div class="shot-caption">PTV3 · 单帧分割 02</div></div>
-            <div class="shot" data-full="assets/ptv3_single_frame_03.jpeg" data-caption="PTV3 单帧分割结果 03"><img src="assets/thumbs/ptv3_single_frame_03.jpeg" alt="PTV3 单帧分割结果 03"><div class="shot-caption">PTV3 · 单帧分割 03</div></div>
+            <div class="shot" data-full="/linhao.github.io/assets/ptv3_single_frame_01.jpeg" data-caption="PTV3 单帧分割结果 01"><img src="/linhao.github.io/assets/thumbs/ptv3_single_frame_01.jpeg" alt="PTV3 单帧分割结果 01"><div class="shot-caption">PTV3 单帧分割结果 01</div></div>
+            <div class="shot" data-full="/linhao.github.io/assets/ptv3_single_frame_02.jpeg" data-caption="PTV3 单帧分割结果 02"><img src="/linhao.github.io/assets/thumbs/ptv3_single_frame_02.jpeg" alt="PTV3 单帧分割结果 02"><div class="shot-caption">PTV3 单帧分割结果 02</div></div>
+            <div class="shot" data-full="/linhao.github.io/assets/ptv3_single_frame_03.jpeg" data-caption="PTV3 单帧分割结果 03"><img src="/linhao.github.io/assets/thumbs/ptv3_single_frame_03.jpeg" alt="PTV3 单帧分割结果 03"><div class="shot-caption">PTV3 单帧分割结果 03</div></div>
           </div>
-          <div class="project-body"><ul class="bullet"><li>单帧 LiDAR 语义分割结果，作为后续 4D 场景融合的语义输入。</li><li>覆盖道路、路沿、车辆、行人、骑行者、杆牌、植被等 16 类场景元素。</li></ul><ul class="bullet"><li>用于支撑端到端训练数据生产、自动标注质检和长尾 case 分析。</li><li>可与 viser 4D 可视化结合，快速定位数据与模型问题。</li></ul></div>
+          <div class="project-body"><ul class="bullet"><li>单帧 LiDAR 语义分割结果，作为后续 4D 场景融合的语义输入。</li><li>覆盖道路、路沿、车辆、行人、骑行者、植被、建筑物等关键类别。</li></ul><ul class="bullet"><li>高精度 Vehicle / Rider / Road 类别结果，显著提升自动标注链路稳定性。</li><li>通过可视化与指标联动，便于快速定位语义分割在长尾类别上的短板。</li></ul></div>
         </article>
 
         <article class="project">
-          <div class="project-head"><div><h3>Fusion4D · 4D 预标注产线最终可视化</h3><p>静态点基于 global pose 多帧融合，动态目标基于 OD + MOT 做对象级聚合，形成可用于训练闭环的 4D 动态场景数据。</p></div><span class="pill">4D Production Output</span></div>
+          <div class="project-head"><div><h3>Fusion4D · 4D 预标注产线最终可视化</h3><p>静态点基于 global pose 多帧融合，动态目标基于 OD + MOT 做对象级聚合，形成可直接用于云端自动标注的 4D 先验。</p></div><span class="pill">4D Autolabeling</span></div>
           <div class="gallery two">
-            <div class="shot" data-full="assets/fusion4d_production_01.jpeg" data-caption="Fusion4D 4D 预标注产线最终可视化 01"><img src="assets/thumbs/fusion4d_production_01.jpeg" alt="Fusion4D 4D 预标注产线最终可视化 01"><div class="shot-caption">Fusion4D · 产线最终可视化 01</div></div>
-            <div class="shot" data-full="assets/fusion4d_production_02.jpeg" data-caption="Fusion4D 4D 预标注产线最终可视化 02"><img src="assets/thumbs/fusion4d_production_02.jpeg" alt="Fusion4D 4D 预标注产线最终可视化 02"><div class="shot-caption">Fusion4D · 产线最终可视化 02</div></div>
+            <div class="shot" data-full="/linhao.github.io/assets/fusion4d_production_01.jpeg" data-caption="Fusion4D 4D 预标注产线最终可视化 01"><img src="/linhao.github.io/assets/thumbs/fusion4d_production_01.jpeg" alt="Fusion4D 4D 预标注产线最终可视化 01"><div class="shot-caption">Fusion4D 4D 预标注产线最终可视化 01</div></div>
+            <div class="shot" data-full="/linhao.github.io/assets/fusion4d_production_02.jpeg" data-caption="Fusion4D 4D 预标注产线最终可视化 02"><img src="/linhao.github.io/assets/thumbs/fusion4d_production_02.jpeg" alt="Fusion4D 4D 预标注产线最终可视化 02"><div class="shot-caption">Fusion4D 4D 预标注产线最终可视化 02</div></div>
           </div>
-          <div class="project-body"><ul class="bullet"><li>静态点：基于 LIO-SLAM global pose 做多帧全局融合。</li><li>动态点：基于 OD detector + MOT trackID 做 object-level temporal fusion。</li></ul><ul class="bullet"><li>通过异步 PCD 写入与云端并行调度提升大规模生产效率。</li><li>产线已完成约 100w clip / 6000w 帧预刷生产。</li></ul></div>
+          <div class="project-body"><ul class="bullet"><li>静态点：基于 LIO-SLAM global pose 做多帧全局融合。</li><li>动态点：基于 OD detector + MOT trackID 做 object-level temporal fusion。</li></ul><ul class="bullet"><li>结合语义分割、检测与时序关联，提升自动标注一致性和产线效率。</li><li>1 个月内完成 autolabeling 核心链路上线。</li></ul></div>
         </article>
 
         <article class="project">
           <div class="project-head">
-            <div><h3>S-D4RT 几何预训练 · Streaming D4RT-Geo Architecture</h3><p>将 D4RT 的 query-based geometry learning 迁移到自动驾驶多相机、LiDAR、ego pose 场景，面向流式 4D 几何表征与端到端任务预训练。</p></div>
+            <div><h3>S-D4RT 几何预训练 · Streaming D4RT-Geo Architecture</h3><p>将 D4RT 的 query-based geometry learning 迁移到自动驾驶多相机、LiDAR、ego pose 场景，面向流式 4D 感知与几何表示学习。</p></div>
             <span class="pill">Geometry Pretraining</span>
           </div>
-          <div class="shot diagram-shot" data-full="assets/sd4rt_geo_pretrain.png" data-caption="S-D4RT-Geo：流式 4D 几何预训练整体架构 / Streaming D4RT-Geo Architecture">
-            <img src="assets/thumbs/sd4rt_geo_pretrain.png" alt="S-D4RT-Geo 流式 4D 几何预训练整体架构">
+          <div class="shot diagram-shot" data-full="/linhao.github.io/assets/sd4rt_geo_pretrain.png" data-caption="S-D4RT-Geo：流式 4D 几何预训练整体架构 / Streaming D4RT-Geo Architecture">
+            <img src="/linhao.github.io/assets/thumbs/sd4rt_geo_pretrain.png" alt="S-D4RT-Geo 流式 4D 几何预训练整体架构">
             <div class="shot-caption">S-D4RT-Geo · 流式 4D 几何预训练整体架构</div>
           </div>
           <div class="architecture-panel">
@@ -388,7 +388,7 @@
 
     <section id="experience">
       <div class="shell">
-        <div class="section-head"><div><h2 class="section-title">工作经历</h2><p class="section-desc">简历主体保留工程事实和可量化结果，网页中把图片与数据指标放在项目可视化区域。</p></div></div>
+        <div class="section-head"><div><h2 class="section-title">工作经历</h2><p class="section-desc">简历主体保留工程事实和可量化结果，网页中把图片与数据指标放在项目模块中统一展示。</p></div></div>
         <div class="timeline">
           <article class="role">
             <div class="role-top"><h3>岚图汽车｜E2E Perception Expert</h3><time>2025 - 至今</time></div>
